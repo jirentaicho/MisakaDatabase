@@ -38,6 +38,4 @@ public interface MisakaRepository<I,T> {
     boolean deleteById(I id);
 
     boolean deleteAll();
-
-    boolean deleteMap(Map<I,T> map);
 }

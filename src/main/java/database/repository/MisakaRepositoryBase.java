@@ -69,15 +69,5 @@ public abstract class MisakaRepositoryBase<I,T> implements MisakaRepository<I,T>
         return true;
     }
 
-    @Override
-    public boolean deleteMap(Map<I,T> map) {
-        Set<?> set = new HashSet<>(map.keySet());
-        Map<I,T> tableMap = this.table.getMap();
-        this.table.getMap().keySet().stream().forEach(i -> {
-            if(set.contains(i)){
-                tableMap.remove(i);
-            }
-        });
-        return true;
-    }
+    // TODO create deleteMap
 }
