@@ -66,6 +66,22 @@ class MisakaDatabaseTest {
         this.misakaSimpleRepository.update(misaka.id, misaka);
         updatedmisaka = this.misakaSimpleRepository.findById(1).get();
         assertEquals("Bili Bili" , updatedmisaka.name);
+
+    }
+
+    @Test
+    public void test_findAllUpte(){
+        List<Toaru> toarus = this.misakaSimpleRepository.findAll();
+        Toaru toaru = toarus.get(1);
+        assertEquals("Shokuho Misaki", toaru.name);
+        toaru.name = "Joou";
+
+        Toaru misaki = this.misakaSimpleRepository.findById(1).get();
+        assertNotEquals("Joou", misaki.name);
+
+        this.misakaSimpleRepository.update(1, toaru);
+        misaki = this.misakaSimpleRepository.findById(1).get();
+        assertEquals("Joou", misaki.name);
     }
 
 }
