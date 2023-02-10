@@ -24,7 +24,7 @@ public final class MisakaDatabase{
         // Already holds a table of the same type
         if(Objects.nonNull(MisakaDatabase.tables.get(clazz))) {
             Table<I,T> currentTable = (Table<I, T>) MisakaDatabase.tables.get(clazz);
-            currentTable.getMap().putAll(map);
+            currentTable.getMapClone().putAll(map);
         } else {
             // create table after add to misaka database
             Table<I, T> table = Table.of(map);

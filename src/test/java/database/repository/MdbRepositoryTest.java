@@ -41,10 +41,9 @@ class MdbRepositoryTest {
     }
     @Test
     public void test_update(){
-        MisakaDatabase database = MisakaDatabase.getDatabase();
-        database.setupTableMap(User.class,this.getSampleMap());
-
         MisakaRepository<Integer,User> repository = new MdbRepository<>(User.class);
+        repository.insertMap(this.getSampleMap());
+
         User user = repository.findById(1).get();
         assertFalse(user.getDeleteFlag());
 
@@ -92,11 +91,11 @@ class MdbRepositoryTest {
 
     @Test
     public void test_add_initrecord(){
-        MisakaDatabase database = MisakaDatabase.getDatabase();
-        database.setupTableMap(User.class,this.getSampleMap());
+        MisakaRepository<Integer,User> repository = new MdbRepository<>(User.class);
+        repository.insertMap(this.getSampleMap());
 
         Map<Integer,User> map = Map.of(4,new User(4,"boss"));
-        database.setupTableMap(User.class,map);
+        misakaRepository.insertMap(map);
 
         User user = this.misakaRepository.findById(1).get();
         assertEquals(1,user.getId());
