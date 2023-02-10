@@ -1,6 +1,8 @@
 package model;
 
-public class Product {
+import database.MisakaEntity;
+
+public class Product{
     public int id;
     public String name;
     public int price;
@@ -11,5 +13,8 @@ public class Product {
     }
     public void addPrice(int price){
         this.price += price;
+    }
+    public Product(){
+
     }
 }

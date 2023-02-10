@@ -1,5 +1,6 @@
 package myrepository;
 
+import database.MisakaEntity;
 import database.repository.MdbRepository;
 import model.Lot;
 import java.util.List;
@@ -14,7 +15,7 @@ public class LotRepository<I,T> extends MdbRepository<I,T> {
     }
 
     public List<Lot> findLots(Set<String> lotNoList){
-        Map<I,T> tableMap = this.table.getMap();
+        Map<I,T> tableMap = this.table.getMapClone();
         return tableMap.values()
                 .stream()
                 .map(i -> (Lot)i)

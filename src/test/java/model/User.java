@@ -1,6 +1,8 @@
 package model;
 
-public class User {
+import database.MisakaEntity;
+
+public class User{
     private final int id;
     private final String name;
     private boolean deleteFlag = false;
@@ -19,5 +21,9 @@ public class User {
     }
     public boolean getDeleteFlag(){
         return this.deleteFlag;
+    }
+    public User(){
+        this.id = 0;
+        this.name = "none";
     }
 }

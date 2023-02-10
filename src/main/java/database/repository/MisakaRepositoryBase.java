@@ -1,6 +1,7 @@
 package database.repository;
 
 import database.MisakaDatabase;
+import database.MisakaEntity;
 import database.Table;
 
 import java.util.*;
@@ -16,13 +17,13 @@ public abstract class MisakaRepositoryBase<I,T> implements MisakaRepository<I,T>
 
     @Override
     public List<T> findAll() {
-        Map<I,T> tableMap = this.table.getMap();
+        Map<I,T> tableMap = this.table.getMapClone();
         return tableMap.values().stream().collect(Collectors.toList());
     }
 
     @Override
     public Optional<T> findById(I id) {
-        T obj = this.table.getMap().get(id);
+        T obj = this.table.getMapClone().get(id);
         if(Objects.isNull(obj)){
             return Optional.empty();
         }
